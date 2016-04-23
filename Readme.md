@@ -5,7 +5,7 @@
 [1] SYSTEM DESCRIPTION 
 
 
-The main aim of this project is to take an existing but somewhat dated C++ solution to solving Sudoku puzzles (written incumbent Singapore Prime Minister Lee Hsien Loong) and updating it to use modern and idiomatic C++11. This project doesn't aim to improve or otherwise modify the underlying algorithm applied in solving the Sudoku puzzles, rather it aims to ensure that the program design adopts an object-oriented memory-safe approach, as well as to ensure the inputs/outputs are well-guarded against malformed data. 
+The main aim of this project is to take an existing but somewhat dated C++ solution to solving Sudoku puzzles (originally written by incumbent Singapore Prime Minister Lee Hsien Loong) and updating it to use modern and idiomatic C++11. This project doesn't aim to improve or otherwise modify the underlying algorithm applied in solving the Sudoku puzzles, rather it aims to ensure that the program design adopts an object-oriented memory-safe approach, as well as to ensure the inputs/outputs are well-guarded against malformed data. 
 
 The user interface will be kept simple - an unsolved (incomplete) Sudoku puzzle will be fed in from an ASCII text file with a prescribed format, and the program will output the solved (completed) Sudoku puzzle on the standard output stream. Currently the program will expect the text file name to be predefined (i.e. users can't specify the file name yet) and display user-friendly (I hope...) error messages should the file contents not be formatted according to the expected format. 
 
