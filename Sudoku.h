@@ -13,15 +13,17 @@ public:
     Sudoku() : Sudoku("Sample.txt") { } 
     ~Sudoku()  { } 
     
-    Sudoku(const std::string & Filename, std::ostream & OUT = std::cout, bool TEST = false) 
-        : File(Filename),           
+    Sudoku(const std::string & Filename, std::ostream & OUT = std::cout, bool TEST = false, bool MANY = false, bool MODE = 0) 
+        : File(Filename), 
+          MANY(MANY), 
+          MODE(MODE), 
           ONES(0x03FE), 
           SeqPtr(0), 
           Solved(0), 
           Count(0), 
           TotalCount(0), 
           OUTPUT(OUT) 
-    {        
+    { 
         InBlock.resize(81);      InRow.resize(81);      InCol.resize(81); 
         Block.resize(9);         Row.resize(9);         Col.resize(9); 
         LevelCount.resize(81);   Sequence.resize(81);   Entry.resize(81); 
@@ -42,29 +44,46 @@ public:
         
         GridValues.resize(81); 
         
-        if (!TEST)
+        if (!MANY)
         { 
-            if (IOFile(OUTPUT))
+            if (!TEST)
             { 
-                if (SolverSane(OUTPUT, GridValues))
-                {
-                    SolverPlace(SeqPtr); 
-                }
-            } 
-            IOStats(OUTPUT); 
-            TotalCount += Count; 
+                if (IOFile(OUTPUT))
+                { 
+                    Start(); 
+                } 
+                IOStats(OUTPUT); 
+                TotalCount += Count; 
+            }
         }
     }
     
+    inline bool Check() 
+    { 
+        return SolverSane(OUTPUT, GridValues); 
+    } 
+    void Start() 
+    { 
+        if (MODE == 1) 
+        {
+            if (Check()) SolverPlace(SeqPtr);  
+        }
+        else 
+        {
+            SolverPlace(SeqPtr); 
+        } 
+    } 
+    
     // In file Solver.cpp     
-    void SolverInit(int i, int j, int val); 
-    void SolverSwap(int S1, int S2); 
-    int  SolverNext(int S); 
-    int  SolverPlace(int S); 
-    bool SolverSane(std::ostream & OUT, const std::vector<int> & RawData); 
+    void SolverInit (int i,  int j,  int val); 
+    void SolverSwap (int S1, int S2); 
+    int  SolverNext (int S); 
+    int  SolverPlace(int S);     
+    bool SolverSane (std::ostream & OUT, const std::vector<int> & RawData); 
     
     // In file IO.cpp 
-    bool IOFile(std::ostream  & OUT); 
+    bool IOMany (std::ostream & OUT, std::ifstream & Input); 
+    bool IOFile (std::ostream & OUT); 
     void IOPrint(std::ostream & OUT); 
     void IOStats(std::ostream & OUT); 
     
@@ -73,7 +92,7 @@ public:
     
 private: 
     const std::string File; 
-    const int ONES; 
+    const int MANY, MODE, ONES; 
     int   SeqPtr, Solved, Count, TotalCount; 
     
     std::ostream & OUTPUT; 
