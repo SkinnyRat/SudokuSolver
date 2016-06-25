@@ -1,6 +1,34 @@
 #include "Sudoku.h" 
 
 
+bool Sudoku::IOMany(std::ostream  & OUT, std::ifstream & Input)
+{
+    std::string  Line;     
+    auto ch = '-'; 
+    
+    for (auto i = 0; i < 9; i++) 
+    {
+        Input >> Line; 
+        if (Input.eof() || Line.length() < 9)
+        {
+            OUT << "Line " << (i+1) << " incomplete or mal-formatted." << std::endl; 
+            return false; 
+        }
+        for (auto j = 0; j < 9; j++) 
+        {
+            ch = Line[j]-'0'; 
+            if (ch >= 1 && ch <= 9) 
+            { 
+                SolverInit(i, j, ch); 
+            }
+        }
+    }    
+    IOPrint(OUT);     
+    
+    return true; 
+}
+
+
 bool Sudoku::IOFile(std::ostream & OUT) 
 {
     OUT << std::endl << "Sudoku puzzle input from file '" << File << "': " << std::endl; 
@@ -46,6 +74,10 @@ void Sudoku::IOPrint(std::ostream & OUT)
     {
         OUT << std::endl << "Solution: " << std::endl; 
     } 
+    else
+    {
+        OUT << std::endl << "Puzzle: "   << std::endl; 
+    }
     
     for (auto i = 0; i < 9; i++) 
     {
@@ -88,14 +120,13 @@ void Sudoku::IOPrint(std::ostream & OUT)
 
 void Sudoku::IOStats(std::ostream & OUT) 
 {
-    if (Solved)
+    if (Solved) 
     {
-        if (!SolverSane(OUT, GridValues))
-        {
-            return; 
-        }
+        if (MODE == 1) 
+            if (!SolverSane(OUT, GridValues)) 
+                return; 
     }
-    else
+    else 
     {
         OUT << std::endl << "No solution found." << std::endl << std::endl; 
         return; 
@@ -123,5 +154,7 @@ void Sudoku::IOStats(std::ostream & OUT)
     }
     OUT << std::endl << "Count = " << Count << std::endl << std::endl; 
 }
+
+
 
 
