@@ -64,7 +64,8 @@ int  Sudoku::SolverPlace(int S)
     if (S >= 81) 
     {
         Solved++; 
-        IOPrint(OUTPUT); 
+        if (!MANY) IOPrint(OUTPUT); 
+        
         return (1); 
     }
     
@@ -93,6 +94,7 @@ int  Sudoku::SolverPlace(int S)
         Col[ColIndex]       |= valbit; 
     } 
     
+    //SolverSwap(S, S2); 
     return (0); 
 }
 
@@ -174,6 +176,5 @@ bool Sudoku::SolverSane(std::ostream & OUT, const std::vector<int> & RawData)
     
     return true; 
 }
-
 
 
