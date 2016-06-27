@@ -26,6 +26,10 @@ The usage of templates and inheritance/polymorphism are not required in this des
 
 <img src="https://cloud.githubusercontent.com/assets/13679090/16379504/76ccf2f6-3ca4-11e6-9282-7ab19d35c34f.png" width="720">
 
+COMMAND LINE ARGUMENTS. 
+
+The program is also able to print out solver statistics but this option is turned off by default. 
+
 <br>
  
 #### [3] PROGRAM TESTING  
