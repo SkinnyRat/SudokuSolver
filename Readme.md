@@ -19,10 +19,12 @@ The following features will be the focus of this implementation:
 - STL data structures 
 - Guarded inputs/outputs 
 - Automated unit testing 
-- Multi-threaded support (coming soon) 
-- Exception-safe execution (coming soon) 
+- Multi-threaded support 
+- Basic Exception Safety 
 
 The usage of templates and inheritance/polymorphism are not required in this design model. 
+
+<img src="https://cloud.githubusercontent.com/assets/13679090/16379504/76ccf2f6-3ca4-11e6-9282-7ab19d35c34f.png" width="720">
 
 <br>
  
@@ -35,10 +37,12 @@ User acceptance testing would (in the case of an actual field test) focus on use
 
 <br>
  
-#### [4] INITIAL DESIGN STRATEGY 
+#### [4] DESIGN STRATEGY 
 
 
 The current program layout looks suitable to be grouped into 2 classes - 1 class to handle the file I/O, and 1 class to handle the actual puzzle-solving. Where necessary, STL containers (e.g. std::vector, std::stringstream) will be used in place of the existing C-style arrays, and existing global data members will be encapsulated in the respective classes. Operators will be overloaded as needed where helpful in handling I/O streaming operations. 
+
+EXCEPTION SAFETY GOES HERE. 
 
 <br>
  
