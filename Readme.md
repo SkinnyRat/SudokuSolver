@@ -7,7 +7,7 @@
 
 The main aim of this project is to take an existing but somewhat dated C++ solution to solving Sudoku puzzles (originally written by incumbent Singapore Prime Minister Lee Hsien Loong) and updating it to use modern and idiomatic C++14. This project doesn't aim to improve or otherwise modify the underlying algorithm applied in solving the Sudoku puzzles, rather it aims to ensure that the program design adopts an object-oriented memory-safe approach, as well as to ensure the inputs/outputs are well-guarded against malformed data. 
 
-The user interface will be kept simple - an unsolved (incomplete) Sudoku puzzle will be fed in from an ASCII text file with a prescribed format, and the program will output the solved (completed) Sudoku puzzle on the standard output stream. Currently the program will expect the text file name to be predefined and display user-friendly error messages should the file contents not be formatted according to the expected format. This program also offers a function to convert puzzles stored on a single line to the format used in the program. 
+The user interface will be kept simple - an unsolved (incomplete) Sudoku puzzle will be fed in from an ASCII text file with a prescribed format, and the program will output the solved (completed) Sudoku puzzle on the standard output stream. Currently the program expects the text file name to be specified in the code and displays user-friendly error messages should the file contents not be formatted according to the expected format. This program also offers a function to convert puzzles stored on a single line to the format used in the program. 
 
 <br>
  
@@ -26,9 +26,12 @@ The usage of templates and inheritance/polymorphism are not required in this des
 
 <img src="https://cloud.githubusercontent.com/assets/13679090/16379504/76ccf2f6-3ca4-11e6-9282-7ab19d35c34f.png" width="720">
 
-COMMAND LINE ARGUMENTS. 
+The following command line arguments are provided, where the name of the program is "main": 
+- ./main test => Perform unit testing. 
+- ./main safe => Check that the puzzles are valid. 
+- ./main fast => Solve the puzzles in multi-threaded mode. 
 
-The program is also able to print out solver statistics but this option is turned off by default. 
+If no arguments are specified, the program will assume the given puzzles are valid and solve them in single-threaded mode. The program is also able to print out solver statistics but this option is turned off by default. 
 
 <br>
  
