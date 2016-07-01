@@ -20,7 +20,7 @@ The following features will be the focus of this implementation:
 - Guarded inputs/outputs 
 - Automated unit testing 
 - Multi-threaded support 
-- No-throw Exception safety 
+- No-throw exception safety 
 
 The usage of templates and inheritance/polymorphism are not required in this design model. 
 
@@ -47,16 +47,18 @@ PERFORMANCE TESTING GOES HERE.
 #### [4] DESIGN STRATEGY 
 
 
-The algorithm layout looks suitable to be organized into 2 groups - 1 group to handle the file I/O, and 1 group to handle the actual puzzle-solving. Where necessary, STL containers (e.g. std::vector, std::stringstream) will be used in place of the existing C-style arrays, and pre-existing global data members from the original program will be encapsulated in the class definition. Operators will be overloaded as needed where helpful in handling I/O streaming operations. 
+The algorithm layout looks suitable to be organized into 2 groups - 1 group to handle the file I/O, and 1 group to handle the actual puzzle-solving. Where necessary, STL containers (e.g. std::vector, std::stringstream) will be used in place of the existing C-style arrays, and pre-existing global data members from the original program will be encapsulated in the class definition. Operators may be overloaded as needed where helpful in handling I/O streaming operations. 
 
-In terms of Exception safety, the goal is to have no exceptions thrown during the execution of the critical parts of the program (optional parts like file format conversion or unit testing are not scrutinized for exception safety). In these parts the usage of STL components that don't throw or explicitly marked noexcept is maximized, and usage of STL components that do throw are carefully guarded if the possible exceptions that arise come from program bugs rather than unforseen circumstances; e.g. std::string::erase() throws std::out_of_range if index > size(). 
+In terms of Exception safety, the goal is to have no exceptions thrown during the execution of the critical parts of the program (optional parts like file format conversion or unit testing are not scrutinized for exception safety). In these parts the usage of STL components that don't throw or are explicitly marked 'noexcept' is maximized, and usage of STL components that do throw is carefully guarded if the possible exceptions that can arise come from program bugs rather than unforseen circumstances; e.g. std::string::erase() throws std::out_of_range if index > size(). 
 
-All other sources of possible exceptions stem from either having not enough memory (e.g. std::vector::reserve(), std::make_unique, std::string) or some other system error (e.g. std::thread, std::mutex), and offering exception safety in these regards involve testing the system in addition to testing the program. Each Sudoku object requires at most 900*sizeof(int) bytes of memory, and also if the std::string allocations for each class don't exceed 400 bytes, an x86-64 Linux system with 4 GB free RAM and not running any other userspace processes should be able to handle up to 1,000,000 puzzles without throwing any exceptions in the program's lifetime. 
+All other sources of possible exceptions in this program stem from either having not enough memory (e.g. std::vector::reserve(), std::make_unique, std::string) or some other serious system error (e.g. std::thread, std::mutex), and offering exception safety in these regards involve testing the system in addition to testing the program. Each Sudoku object requires at most 900*sizeof(int) bytes of memory, and also if the std::string allocations for each object don't exceed 400 bytes, an x86-64 Linux system with 4 GB free RAM that's not running any other userspace processes should be able to handle up to 1,000,000 puzzles without throwing any exceptions within the program's lifetime. 
 
 <br>
  
 Original Version Source [MIT Licence] : http://bit.ly/1zAXbua 
 
 CNN Article: http://edition.cnn.com/2015/05/06/asia/singapore-pm-code-sudoku/ 
+
+
 
 
