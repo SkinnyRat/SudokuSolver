@@ -48,6 +48,8 @@ Single-threaded execution for 10,000 & 20,000 puzzles: <br/>
 | USER   | 0m 2.083s       | 0m 2.169s       | 0m 4.166s       | 0m 4.232s     |
 | SYS    | 0m 0.633s       | 0m 0.590s       | 0m 1.252s       | 0m 1.245s     |
 
+<img src="https://cloud.githubusercontent.com/assets/13679090/17644374/51e5874a-61b7-11e6-8bfa-ee7efaa0d07e.png" width="720">
+
 
 Multi-threaded  execution for 10,000 & 20,000 puzzles: <br/> 
 
@@ -56,6 +58,9 @@ Multi-threaded  execution for 10,000 & 20,000 puzzles: <br/>
 | REAL   | 0m 2.349s       | 0m 2.429s       | 0m 4.601s       | 0m 4.656s     |
 | USER   | 0m 2.836s       | 0m 2.854s       | 0m 5.624s       | 0m 5.633s     |
 | SYS    | 0m 0.622s       | 0m 0.646s       | 0m 1.229s       | 0m 1.232s     |
+
+<img src="https://cloud.githubusercontent.com/assets/13679090/17644375/55811cca-61b7-11e6-858f-89a53f2a95ee.png" width="720">
+<img src="https://cloud.githubusercontent.com/assets/13679090/17644376/55dc9c6c-61b7-11e6-8c90-aa38110cc78f.png" width="720">
 
 <br>
  
@@ -73,7 +78,3 @@ All other sources of possible exceptions in this program stem from either having
 Original Version Source [MIT Licence] : http://bit.ly/1zAXbua 
 
 CNN Article: http://edition.cnn.com/2015/05/06/asia/singapore-pm-code-sudoku/ 
-
-
-
-
