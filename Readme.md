@@ -40,20 +40,22 @@ If no arguments are specified, the program will assume the given puzzles are val
 
 The system-level unit-testing for this project will use CppUnitLite and will place a greater focus on the inputs/outputs and checking that the program can handle various cases of improperly-formatted data, and not so much on the underlying algorithm, which is assumed to be correct. The minimal testing will be applied to the algorithm itself to verify that it works and that there are no memory leaks or out-of-bound array elements; other edge cases will not be tested. 
 
-Single-threaded execution for 10,000 & 20,000 puzzles: 
- MODE   | 10,000 Take 1   | 10,000 Take 2   | 20,000 Take 1   | 20,000 Take 2 
- ---    | ---             | ---             | ---             | --- 
- REAL   | 0m 3.295s       | 0m 3.348s       | 0m 6.591s       | 0m 6.661s 
- USER   | 0m 2.083s       | 0m 2.169s       | 0m 4.166s       | 0m 4.232s 
- SYS    | 0m 0.633s       | 0m 0.590s       | 0m 1.252s       | 0m 1.245s 
+Single-threaded execution for 10,000 & 20,000 puzzles: <br/> 
+
+| MODE   | 10,000 Take 1   | 10,000 Take 2   | 20,000 Take 1   | 20,000 Take 2 |
+| ---    | ---             | ---             | ---             | ---           |
+| REAL   | 0m 3.295s       | 0m 3.348s       | 0m 6.591s       | 0m 6.661s     |
+| USER   | 0m 2.083s       | 0m 2.169s       | 0m 4.166s       | 0m 4.232s     |
+| SYS    | 0m 0.633s       | 0m 0.590s       | 0m 1.252s       | 0m 1.245s     |
 
 
-Multi-threaded  execution for 10,000 & 20,000 puzzles: 
- MODE   | 10,000 Take 1   | 10,000 Take 2   | 20,000 Take 1   | 20,000 Take 2 
- ---    | ---             | ---             | ---             | --- 
- REAL   | 0m 2.349s       | 0m 2.429s       | 0m 4.601s       | 0m 4.656s 
- USER   | 0m 2.836s       | 0m 2.854s       | 0m 5.624s       | 0m 5.633s 
- SYS    | 0m 0.622s       | 0m 0.646s       | 0m 1.229s       | 0m 1.232s 
+Multi-threaded  execution for 10,000 & 20,000 puzzles: <br/> 
+
+| MODE   | 10,000 Take 1   | 10,000 Take 2   | 20,000 Take 1   | 20,000 Take 2 |
+| ---    | ---             | ---             | ---             | ---           |
+| REAL   | 0m 2.349s       | 0m 2.429s       | 0m 4.601s       | 0m 4.656s     |
+| USER   | 0m 2.836s       | 0m 2.854s       | 0m 5.624s       | 0m 5.633s     |
+| SYS    | 0m 0.622s       | 0m 0.646s       | 0m 1.229s       | 0m 1.232s     |
 
 <br>
  
