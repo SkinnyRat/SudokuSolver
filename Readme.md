@@ -74,7 +74,12 @@ In terms of Exception safety, the goal is to have no exceptions thrown during th
 All other sources of possible exceptions in this program stem from either having not enough memory (e.g. std::vector::reserve(), std::make_unique, std::string) or some other serious system error (e.g. std::thread, std::mutex), and offering exception safety in these regards involve testing the system in addition to testing the program. Each Sudoku object requires at most 900*sizeof(int) bytes of memory, and also if the std::string allocations for each object don't exceed 400 bytes, an x86-64 Linux system with 4 GB free RAM that's not running any other userspace processes should be able to handle up to 1,000,000 puzzles without throwing any exceptions within the program's lifetime. 
 
 <br>
- 
+
 Original Version Source [MIT Licence] : http://bit.ly/1zAXbua 
 
 CNN Article: http://edition.cnn.com/2015/05/06/asia/singapore-pm-code-sudoku/ 
+
+Sample Puzzles From: https://projecteuler.net/problem=96 and http://www.printable-sudoku-puzzles.com/wfiles/ 
+
+
+
