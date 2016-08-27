@@ -94,15 +94,14 @@ private:
     const std::string File; 
     const int MANY, MODE, ONES; 
     int   SeqPtr, Solved, Count, TotalCount; 
-    
+
     std::ostream & OUTPUT; 
-    
+
     std::vector<int> GridValues; 
-	std::vector<int> InBlock,      InRow,      InCol; 
+    std::vector<int> InBlock,      InRow,      InCol; 
     std::vector<int> Block,        Row,        Col;                             // Each int is a 9-bit array. 
     std::vector<int> LevelCount,   Sequence,   Entry;                           // Records entries 1-9 in the grid, has the corresponding bit set to 1. 
 };
-
 
 
 

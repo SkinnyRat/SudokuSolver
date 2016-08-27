@@ -36,7 +36,7 @@ int main(int argc, char * argv[])
     // Sudoku sudoku("Sample.txt", std::cout, false, false, 1); 
     
     // Use to covert rows of 81 into matrices of 9x9. 
-    // FormatFile("Temp.txt"); 
+    // FormatFile("TEMP.txt"); 
     
     std::ifstream Input("SampleGood.txt"); 
     if (Input.fail() || !Input.is_open())
@@ -173,28 +173,27 @@ int FormatFile(std::string FileName)
     Input.close(); 
     
     std::string Text = buffer.str(); 
-    Text.erase(std::remove(Text.begin(), Text.end(), '\n'), Text.end()); 
+    //Text.erase(std::remove(Text.begin(), Text.end(), '\n'), Text.end()); 
     
     std::ofstream Output(FileName); 
     if (Output.fail() || !Output.is_open()) 
     {
         std::cout << "Unable to read file... =( " << std::endl; 
         return -1; 
-    }    
-    for(unsigned int i=0; i<Text.length(); i+=9) 
-    {
-        Output << Text.substr(i, 9) << std::endl; 
     }
-    
+    auto col = 0; 
+    for (unsigned int i=0; i<Text.length(); i++) 
+    {
+        if (Text[i] >= '0' && Text[i] <= '9')
+        {
+            Output << Text[i]; 
+            col++; 
+            if (col%9 == 0) Output << std::endl; 
+        }
+    }
     Output.close(); 
     return (0); 
 }
-
-
-
-
-
-
 
 
 

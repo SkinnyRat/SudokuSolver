@@ -3,7 +3,8 @@
 
 bool Sudoku::IOMany(std::ostream  & OUT, std::ifstream & Input)
 {
-    std::string  Line;     
+    std::string  Line; 
+    Line.reserve(10); 
     auto ch = '-'; 
     
     for (auto i = 0; i < 9; i++) 
@@ -154,7 +155,5 @@ void Sudoku::IOStats(std::ostream & OUT)
     }
     OUT << std::endl << "Count = " << Count << std::endl << std::endl; 
 }
-
-
 
 

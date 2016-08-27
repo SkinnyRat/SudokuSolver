@@ -45,4 +45,3 @@ TEST(InputTest, CppUnitLite)
     CHECK_EQUAL(Out2.str(), "\nNo solution found.\n\n"); 
 }
 
-

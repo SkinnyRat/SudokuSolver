@@ -1,9 +1,9 @@
 # Declaration of variables
 CC = g++
-CC_FLAGS = -std=c++14 -O3 -Wall 
+CC_FLAGS = -std=c++14 -pthread -O3 -Wall 
 
 # File names
-EXEC = run
+EXEC = Sudoku
 SOURCES = $(wildcard *.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
 
