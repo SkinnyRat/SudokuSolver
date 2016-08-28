@@ -177,3 +177,4 @@ bool Sudoku::SolverSane(std::ostream & OUT, const std::vector<int> & RawData)
     return true; 
 }
 
+
