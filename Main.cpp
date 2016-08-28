@@ -35,7 +35,7 @@ int main(int argc, char * argv[])
     // Example usage for single puzzle, with safety checks. 
     // Sudoku sudoku("Sample.txt", std::cout, false, false, 1); 
     
-    // Use to covert rows of 81 into matrices of 9x9. 
+    // Used to covert rows of 81 into matrices of 9x9. 
     // FormatFile("TEMP.txt"); 
     
     std::ifstream Input("SampleGood.txt"); 
