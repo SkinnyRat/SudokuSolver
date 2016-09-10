@@ -50,8 +50,9 @@ Single-threaded execution for 10,000 & 20,000 puzzles: <br/>
 
 <img src="https://cloud.githubusercontent.com/assets/13679090/18411951/25b0ffe6-77b6-11e6-8e71-e0cbd2290175.png" width="720">
 <br>
-The call graph above, profiled using Valgrind, shows... 
-
+The call graph above, profiled using Valgrind, shows that the program spends about 40% of the time solving the puzzles and 60% of the time printing to the output stream. Since the solver algorithm itself is assumed to be efficient, the time spent on peripheral tasks like I/O should actually be minimized, and one possible future solution might be to push all the output onto a string buffer before streaming the complete output only at the end. 
+ 
+<br>
 
 Multi-threaded  execution for 10,000 & 20,000 puzzles: <br/> 
 
@@ -64,8 +65,8 @@ Multi-threaded  execution for 10,000 & 20,000 puzzles: <br/>
 <img src="https://cloud.githubusercontent.com/assets/13679090/18411950/22e68308-77b6-11e6-807a-3c07bfb40cde.png" width="720">
 <img src="https://cloud.githubusercontent.com/assets/13679090/18411949/22e32370-77b6-11e6-8a3c-4eb965cd0f7d.png" width="720">
 <br>
-On the other hand, the 2 call graphs above show the program execution over the main thread and 1 of the child threads. 
-
+On the other hand, the 2 call graphs above show the program execution over the main thread and 1 of the 4 child threads. Over here, though, the situation is somewhat reversed in that the threads spend about 60% of the time solving the puzzles and 40% of the time on output. This might seem like an improvement from single-threaded execution but the absolute times did not show a proportional improvement; from this exercise it is suggested that the work required to fork the threads isn't negligible compared to the work done in each thread, at least for 20,000 puzzles. 
+ 
 <br>
  
 #### [4] DESIGN STRATEGY 
