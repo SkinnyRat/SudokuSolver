@@ -50,7 +50,7 @@ Single-threaded execution for 10,000 & 20,000 puzzles: <br/>
 
 <img src="https://cloud.githubusercontent.com/assets/13679090/18411951/25b0ffe6-77b6-11e6-8e71-e0cbd2290175.png" width="720">
 <br>
-The call graph above, profiled using Valgrind, shows that the program spends about 40% of the time solving the puzzles and 60% of the time printing to the output stream. Since the solver algorithm itself is assumed to be efficient, the time spent on peripheral tasks like I/O should actually be minimized, and one possible future solution might be to push all the output onto a string buffer before streaming the complete output only at the end. 
+The call graph above, profiled using Valgrind, shows that the program spends about 40% of the time solving the puzzles and 60% of the time printing to the output stream. Since the solver algorithm itself is assumed to be efficient, the time spent on peripheral tasks like I/O should ideally be minimized, and one possible future solution might be to push all the output onto a string buffer before streaming the complete output only at the end. 
  
 <br>
 
@@ -65,14 +65,14 @@ Multi-threaded  execution for 10,000 & 20,000 puzzles: <br/>
 <img src="https://cloud.githubusercontent.com/assets/13679090/18411950/22e68308-77b6-11e6-807a-3c07bfb40cde.png" width="720">
 <img src="https://cloud.githubusercontent.com/assets/13679090/18411949/22e32370-77b6-11e6-8a3c-4eb965cd0f7d.png" width="720">
 <br>
-On the other hand, the 2 call graphs above show the program execution over the main thread and 1 of the 4 child threads. Over here, though, the situation is somewhat reversed in that the threads spend about 60% of the time solving the puzzles and 40% of the time on output. This might seem like an improvement from single-threaded execution but the absolute times did not show a proportional improvement; from this exercise it is suggested that the work required to fork the threads isn't negligible compared to the work done in each thread, at least for 20,000 puzzles. 
+On the other hand, the 2 call graphs above show the program execution over the main thread and 1 of the 4 child threads. Over here, though, the situation is somewhat reversed in that the threads spend about 60% of the time solving the puzzles and 40% of the time on output. This might seem like an improvement from single-threaded execution but the absolute times did not really show a proportional improvement; from this exercise it is suggested that the work required to fork & join the threads isn't negligible compared to the work done in each thread, at least for 20,000 puzzles. 
  
 <br>
  
 #### [4] DESIGN STRATEGY 
 
 
-The algorithm layout looks suitable to be organized into 2 groups - 1 group to handle the file I/O, and 1 group to handle the actual puzzle-solving. Where necessary, STL containers (e.g. std::vector, std::stringstream) are used in place of the existing C-style arrays, and pre-existing global data members from the original program are encapsulated in the class definition. Operators may be overloaded as needed where helpful in handling I/O streaming operations. 
+The algorithm layout is suitable to be organized into 2 groups - 1 group to handle the file I/O, and 1 group to handle the actual puzzle-solving. Where necessary, STL containers (e.g. std::vector, std::stringstream) are used in place of the existing C-style arrays, and pre-existing global data members from the original program are encapsulated in the class definition. Operators are overloaded only as needed where helpful in handling I/O streaming operations. 
 
 In terms of Exception safety, the goal is to have no exceptions thrown during the execution of the critical parts of the program (optional parts like file format conversion or unit testing are not scrutinized for exception safety). In these parts the usage of STL components that don't throw or are explicitly marked 'noexcept' is maximized, and usage of STL components that do throw is carefully guarded if the possible exceptions that can arise come from program bugs rather than unforseen circumstances; e.g. std::string::erase() throws std::out_of_range if index > size(). 
 
